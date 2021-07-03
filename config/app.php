@@ -39,7 +39,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'debug' => env('APP_DEBUG', false),
+=======
+    'debug' => env('APP_DEBUG', true),
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +71,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'timezone' => 'UTC',
+=======
+    'timezone' => env('TIMEZONE','UTC'),
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
 
     /*
     |--------------------------------------------------------------------------
@@ -139,7 +147,10 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+<<<<<<< HEAD
         Illuminate\Auth\AuthServiceProvider::class,
+=======
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
@@ -156,7 +167,10 @@ return [
         Illuminate\Pipeline\PipelineServiceProvider::class,
         Illuminate\Queue\QueueServiceProvider::class,
         Illuminate\Redis\RedisServiceProvider::class,
+<<<<<<< HEAD
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
+=======
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
@@ -170,11 +184,17 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+<<<<<<< HEAD
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+=======
+         App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
     ],
 
     /*
@@ -191,8 +211,13 @@ return [
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
+<<<<<<< HEAD
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
+=======
+        'Arr' => Illuminate\Support\Arr::class,
+        'Artisan' => Illuminate\Support\Facades\Artisan::class,
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
@@ -220,10 +245,25 @@ return [
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
+<<<<<<< HEAD
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
 
+=======
+        'Str' => Illuminate\Support\Str::class,
+        'URL' => Illuminate\Support\Facades\URL::class,
+        'Validator' => Illuminate\Support\Facades\Validator::class,
+        'View' => Illuminate\Support\Facades\View::class,
+    ],
+
+    //自定义配置文件
+    'data_access_open' => env('DATA_ACCESS_OPEN', true),
+    'server_name' => env('SERVER_NAME', 'sdk-middle'),
+    'gateway_name' => env('GATEWAY_SERVER_NAME', 'ssp-monitor'),
+    'gateway_register_uri' => env('GATEWAY_REGISTER_URI', '/api/requestUri/submit'),
+    'request_stat_start' => env('REQUEST_STAT_START', true),
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
 ];

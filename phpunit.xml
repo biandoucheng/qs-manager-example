@@ -10,12 +10,21 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit">
+<<<<<<< HEAD
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
 
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
+=======
+        <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+
+        <!--<testsuite name="Feature">-->
+            <!--<directory suffix="Test.php">./tests/Feature</directory>-->
+        <!--</testsuite>-->
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
@@ -23,11 +32,20 @@
         </whitelist>
     </filter>
     <php>
+<<<<<<< HEAD
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="MAIL_DRIVER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
+=======
+        <server name="APP_ENV" value="developer"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="MAIL_DRIVER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
     </php>
 </phpunit>

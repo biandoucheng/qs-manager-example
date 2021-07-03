@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Str;
+
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
 return [
 
     /*
@@ -35,6 +40,10 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
+<<<<<<< HEAD
+=======
+            'url' => env('DATABASE_URL'),
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
@@ -42,6 +51,10 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
+<<<<<<< HEAD
+=======
+            'url' => env('DATABASE_URL'),
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -54,10 +67,20 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
+<<<<<<< HEAD
         ],
 
         'pgsql' => [
             'driver' => 'pgsql',
+=======
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -72,6 +95,10 @@ return [
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
+<<<<<<< HEAD
+=======
+            'url' => env('DATABASE_URL'),
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '1433'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -110,22 +137,51 @@ return [
 
     'redis' => [
 
+<<<<<<< HEAD
         'client' => 'predis',
+=======
+        'client' => env('REDIS_CLIENT', 'predis'),
+
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'predis'),
+            'prefix' => '{'.Str::slug(env('APP_NAME', 'laravel'), '_').'}',
+        ],
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
 
         'default' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => env('REDIS_DB', 0),
+<<<<<<< HEAD
+=======
+            'read_write_timeout' => env('REDIS_WRITE_TIME_OUT',10)
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
         ],
 
         'cache' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
+<<<<<<< HEAD
             'database' => env('REDIS_CACHE_DB', 1),
         ],
 
     ],
+=======
+            'database' => env('REDIS_DB', 0),
+            'read_write_timeout' => env('REDIS_WRITE_TIME_OUT',5)
+        ],
+
+        'redis-session' => [
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => env('REDIS_DB', 0),
+        ]
+
+    ],
+    'fetch' => PDO::FETCH_ASSOC
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
 
 ];

@@ -40,10 +40,35 @@ return [
             'ignore_exceptions' => false,
         ],
 
+<<<<<<< HEAD
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
+=======
+        'sql' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/sql.log'),
+            'level' => 'debug',
+        ],
+
+        'single' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/laravel.log'),
+            'level' => 'error',
+        ],
+
+        'task' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/laravel_task.log'),
+            'level' => 'error',
+        ],
+
+        'cmd' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/laravel_cmd.log'),
+            'level' => 'error',
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
         ],
 
         'daily' => [

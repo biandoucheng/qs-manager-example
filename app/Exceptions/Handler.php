@@ -3,7 +3,15 @@
 namespace App\Exceptions;
 
 use Exception;
+<<<<<<< HEAD
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+=======
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +54,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+<<<<<<< HEAD
         return parent::render($request, $exception);
+=======
+
+>>>>>>> ae55eabf7373d5ebda76e6e836bc54dae3446e3f
     }
 }

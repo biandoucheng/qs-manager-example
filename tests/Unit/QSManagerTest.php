@@ -25,7 +25,7 @@ class QSManagerTest extends TestCase
     #合作伙伴，查询
     protected $partner = [
         'partner_id' => [2,3,4,5,6,7,8,9],
-        'part_type' => 1
+//        'part_type' => 1
     ];
 
     #合作伙伴报表查询
@@ -56,24 +56,23 @@ class QSManagerTest extends TestCase
         $model->search("",new Partner(),$qs);
         print_r($model->result);
 
-
 //        #合作伙伴销售报表
-        $qs = $qsm->load(
-            new ReportCell(),
-            $this->report,
-            [
-                "partner_id" => [
-                    "opt" => "neq_or_nin",
-                    "order" => "DESC",
-                    "index" => 1,
-                    "alias" => "兄弟"
-                ]
-            ]
-        );
-
-        #查询
-        $model = new QSModel();
-        $model->search("",new SaleReport(),$qs);
-        print_r($model->result->toResponse());
+//        $qs = $qsm->load(
+//            new ReportCell(),
+//            $this->report,
+//            [
+//                "partner_id" => [
+//                    "opt" => "neq_or_nin",
+//                    "order" => "DESC",
+//                    "index" => 1,
+//                    "alias" => "兄弟"
+//                ]
+//            ]
+//        );
+//
+//        #查询
+//        $model = new QSModel();
+//        $model->search("",new SaleReport(),$qs);
+//        print_r($model->result->toResponse());
     }
 }

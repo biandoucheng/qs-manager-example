@@ -82,6 +82,130 @@
     'gateway_register_uri' => '/api/requestUri/submit',
     'request_stat_start' => true,
   ),
+  'auth' => 
+  array (
+    'defaults' => 
+    array (
+      'guard' => 'web',
+      'passwords' => 'users',
+    ),
+    'guards' => 
+    array (
+      'web' => 
+      array (
+        'driver' => 'session',
+        'provider' => 'users',
+      ),
+      'api' => 
+      array (
+        'driver' => 'token',
+        'provider' => 'users',
+      ),
+    ),
+    'providers' => 
+    array (
+      'users' => 
+      array (
+        'driver' => 'eloquent',
+        'model' => 'App\\User',
+      ),
+    ),
+    'passwords' => 
+    array (
+      'users' => 
+      array (
+        'provider' => 'users',
+        'table' => 'password_resets',
+        'expire' => 60,
+      ),
+    ),
+  ),
+  'broadcasting' => 
+  array (
+    'default' => 'log',
+    'connections' => 
+    array (
+      'pusher' => 
+      array (
+        'driver' => 'pusher',
+        'key' => '',
+        'secret' => '',
+        'app_id' => '',
+        'options' => 
+        array (
+          'cluster' => 'mt1',
+          'encrypted' => true,
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+      ),
+      'log' => 
+      array (
+        'driver' => 'log',
+      ),
+      'null' => 
+      array (
+        'driver' => 'null',
+      ),
+    ),
+  ),
+  'cache' => 
+  array (
+    'default' => 'redis',
+    'stores' => 
+    array (
+      'apc' => 
+      array (
+        'driver' => 'apc',
+      ),
+      'array' => 
+      array (
+        'driver' => 'array',
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'table' => 'cache',
+        'connection' => NULL,
+      ),
+      'file' => 
+      array (
+        'driver' => 'file',
+        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\framework/cache/data',
+      ),
+      'memcached' => 
+      array (
+        'driver' => 'memcached',
+        'persistent_id' => NULL,
+        'sasl' => 
+        array (
+          0 => NULL,
+          1 => NULL,
+        ),
+        'options' => 
+        array (
+        ),
+        'servers' => 
+        array (
+          0 => 
+          array (
+            'host' => '127.0.0.1',
+            'port' => 11211,
+            'weight' => 100,
+          ),
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'cache',
+      ),
+    ),
+    'prefix' => 'laravel_cache',
+  ),
   'database' => 
   array (
     'default' => 'mysql',
@@ -179,70 +303,47 @@
     ),
     'fetch' => 2,
   ),
-  'excel' => 
+  'filesystems' => 
   array (
-    'exports' => 
+    'default' => 'local',
+    'cloud' => 's3',
+    'disks' => 
     array (
-      'chunk_size' => 500,
-      'pre_calculate_formulas' => false,
-      'csv' => 
+      'local' => 
       array (
-        'delimiter' => ',',
-        'enclosure' => '"',
-        'line_ending' => '
-',
-        'use_bom' => false,
-        'include_separator_line' => false,
-        'excel_compatibility' => false,
+        'driver' => 'local',
+        'root' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\app',
+      ),
+      'public' => 
+      array (
+        'driver' => 'local',
+        'root' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\app/public',
+        'url' => 'http://localhost/storage',
+        'visibility' => 'public',
+      ),
+      's3' => 
+      array (
+        'driver' => 's3',
+        'key' => '',
+        'secret' => '',
+        'region' => 'us-east-1',
+        'bucket' => '',
+        'url' => NULL,
       ),
     ),
-    'imports' => 
+  ),
+  'hashing' => 
+  array (
+    'driver' => 'bcrypt',
+    'bcrypt' => 
     array (
-      'read_only' => true,
-      'heading_row' => 
-      array (
-        'formatter' => 'slug',
-      ),
-      'csv' => 
-      array (
-        'delimiter' => ',',
-        'enclosure' => '"',
-        'escape_character' => '\\',
-        'contiguous' => false,
-        'input_encoding' => 'UTF-8',
-      ),
+      'rounds' => 10,
     ),
-    'extension_detector' => 
+    'argon' => 
     array (
-      'xlsx' => 'Xlsx',
-      'xlsm' => 'Xlsx',
-      'xltx' => 'Xlsx',
-      'xltm' => 'Xlsx',
-      'xls' => 'Xls',
-      'xlt' => 'Xls',
-      'ods' => 'Ods',
-      'ots' => 'Ods',
-      'slk' => 'Slk',
-      'xml' => 'Xml',
-      'gnumeric' => 'Gnumeric',
-      'htm' => 'Html',
-      'html' => 'Html',
-      'csv' => 'Csv',
-      'tsv' => 'Csv',
-      'pdf' => 'Dompdf',
-    ),
-    'value_binder' => 
-    array (
-      'default' => 'Maatwebsite\\Excel\\DefaultValueBinder',
-    ),
-    'transactions' => 
-    array (
-      'handler' => 'db',
-    ),
-    'temporary_files' => 
-    array (
-      'local_path' => 'C:\\Users\\86182\\AppData\\Local\\Temp',
-      'remote_disk' => NULL,
+      'memory' => 1024,
+      'threads' => 2,
+      'time' => 2,
     ),
   ),
   'logging' => 
@@ -262,31 +363,31 @@
       'sql' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager\\storage\\logs/sql.log',
+        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\logs/sql.log',
         'level' => 'debug',
       ),
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager\\storage\\logs/laravel.log',
+        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\logs/laravel.log',
         'level' => 'error',
       ),
       'task' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager\\storage\\logs/laravel_task.log',
+        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\logs/laravel_task.log',
         'level' => 'error',
       ),
       'cmd' => 
       array (
         'driver' => 'single',
-        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager\\storage\\logs/laravel_cmd.log',
+        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\logs/laravel_cmd.log',
         'level' => 'error',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager\\storage\\logs/laravel.log',
+        'path' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -331,6 +432,129 @@
       ),
     ),
   ),
+  'mail' => 
+  array (
+    'driver' => 'smtp',
+    'host' => 'smtp.mailtrap.io',
+    'port' => '2525',
+    'from' => 
+    array (
+      'address' => 'hello@example.com',
+      'name' => 'Example',
+    ),
+    'encryption' => NULL,
+    'username' => NULL,
+    'password' => NULL,
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'markdown' => 
+    array (
+      'theme' => 'default',
+      'paths' => 
+      array (
+        0 => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\resources\\views/vendor/mail',
+      ),
+    ),
+    'log_channel' => NULL,
+  ),
+  'queue' => 
+  array (
+    'default' => 'redis',
+    'connections' => 
+    array (
+      'sync' => 
+      array (
+        'driver' => 'sync',
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'table' => 'jobs',
+        'queue' => 'default',
+        'retry_after' => 90,
+      ),
+      'beanstalkd' => 
+      array (
+        'driver' => 'beanstalkd',
+        'host' => 'localhost',
+        'queue' => 'default',
+        'retry_after' => 90,
+      ),
+      'sqs' => 
+      array (
+        'driver' => 'sqs',
+        'key' => 'your-public-key',
+        'secret' => 'your-secret-key',
+        'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
+        'queue' => 'your-queue-name',
+        'region' => 'us-east-1',
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+        'queue' => 'default',
+        'retry_after' => 90,
+        'block_for' => NULL,
+      ),
+    ),
+    'failed' => 
+    array (
+      'database' => 'mysql',
+      'table' => 'failed_jobs',
+    ),
+  ),
+  'services' => 
+  array (
+    'mailgun' => 
+    array (
+      'domain' => NULL,
+      'secret' => NULL,
+      'endpoint' => 'api.mailgun.net',
+    ),
+    'ses' => 
+    array (
+      'key' => NULL,
+      'secret' => NULL,
+      'region' => 'us-east-1',
+    ),
+    'sparkpost' => 
+    array (
+      'secret' => NULL,
+    ),
+    'stripe' => 
+    array (
+      'model' => 'App\\User',
+      'key' => NULL,
+      'secret' => NULL,
+      'webhook' => 
+      array (
+        'secret' => NULL,
+        'tolerance' => 300,
+      ),
+    ),
+  ),
+  'session' => 
+  array (
+    'driver' => 'array',
+    'lifetime' => '1440',
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\framework/sessions',
+    'connection' => 'redis-session',
+    'table' => 'sessions',
+    'store' => NULL,
+    'lottery' => 
+    array (
+      0 => 2,
+      1 => 100,
+    ),
+    'cookie' => 'laravel_session',
+    'path' => '/',
+    'domain' => NULL,
+    'secure' => false,
+    'http_only' => true,
+    'same_site' => NULL,
+  ),
   'trace_log' => 
   array (
     'server_trace_id' => NULL,
@@ -344,9 +568,9 @@
   array (
     'paths' => 
     array (
-      0 => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager\\resources\\views',
+      0 => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\resources\\views',
     ),
-    'compiled' => false,
+    'compiled' => 'D:\\works\\phpStudy\\PHPTutorial\\WWW\\qs-manager-example\\storage\\framework\\views',
   ),
   'debug-server' => 
   array (
@@ -364,6 +588,7 @@
     ),
     'dont_alias' => 
     array (
+      0 => 'App\\Nova',
     ),
   ),
 );
